@@ -29,7 +29,8 @@ function beReadyPage () {
 	window_height = parseInt($( window ).height());
 	window_width = parseInt($( window ).width());
 	$(".fixed_menu_logo_part").css("left", ((parseInt($( ".fixed_menu_right_cont" ).width()) - parseInt($( ".fixed_menu_left_cont" ).width()))) / 2);
-	
+	if(ismenuopen) 
+		$(".menu_closer").css("display", window_width > 1086 ? "none" : "block");
 }
 
 
@@ -70,4 +71,3 @@ $( window ).resize(function() {
 	setTimeout(function() { beReadyPage();}, 100);
 	return;
 });
-
