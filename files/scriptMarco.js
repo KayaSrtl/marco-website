@@ -1,11 +1,11 @@
 var window_height, window_width;
-var ismenuopen = 0;
+var ismenuopen = false;
 
 
 $( document ).ready(function() {
 	beReadyPage();
-	
-	
+	setTimeout(function() { beReadyPage();}, 100);
+	setTimeout(function() { beReadyPage();}, 1000);
 });
 
 
@@ -70,3 +70,4 @@ $( window ).resize(function() {
 	setTimeout(function() { beReadyPage();}, 100);
 	return;
 });
+
