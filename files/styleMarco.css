@@ -120,6 +120,7 @@ html body {
 
 .fixed_menu_all_buttons_cont  {
 	display: flex;
+	overflow: hidden;
 }
 
 @media only screen and (max-width: 1100px) {
