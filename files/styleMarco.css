@@ -1,83 +1,246 @@
-var window_height, window_width;
-var ismenuopen = false;
+body {
+	margin: 0;
+	padding:0;
+	background-color: #f1f1f1;
+	color: white;
+	font-family: Atkinson Hyperlegible, sans-serif;
+	max-width: 100%;
+	overflow-x: hidden;
+}
 
+html body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
 
-$( document ).ready(function() {
-	beReadyPage();
-	setTimeout(function() { beReadyPage();}, 100);
-	setTimeout(function() { beReadyPage();}, 1000);
-});
+/* width */
+::-webkit-scrollbar {
+	display: block;
+	position: relative;
+	right: 2px;
+	border-radius: 8px;
+	border: solid  black 2px;
+	width: 14.5px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+	border-radius: 2px;
+	background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	border: solid #f1f1f1 3.5px;
+	border-radius: 8px;
+	background: #888; 
+}
 
-$(document).keydown(function(e){
-	
-	
-});
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+}
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 
+.menu_closer {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	z-index: 9;
+	display: none;
+	background:rgba(0, 0, 0, 0.4);
+}
 
-
-$(window).scroll(function(event){
-	
-	
-	
-	
-});
-
-
-function beReadyPage () {
-	window_height = parseInt($( window ).height());
-	window_width = parseInt($( window ).width());
-	//$(".fixed_menu_logo_part").css("left", ((parseInt($( ".fixed_menu_right_cont" ).width()) - parseInt($( ".fixed_menu_left_cont" ).width()))) / 2);
-	if(ismenuopen) 
-		$(".menu_closer").css("display", window_width > 1086 ? "none" : "block");
+.fixed_menu_top {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background: #000000;
+    box-shadow: 0px 4px 0px 0px rgb(13 57 82 / 46%);
+	z-index: 10;
 }
 
 
-function openLeftMenu () {
-	$(".fixed_menu_all_buttons_cont").stop();
-	$(".menu_closer").stop();
-	$('.fixed_menu_all_buttons_cont').animate(
-		{ left: ismenuopen ? -200 : 0 }, 200);
-	if(ismenuopen) {
-		$(".menu_closer").fadeOut(200);
-		$(".menu_opener").addClass('fa-bars');
-		$(".menu_opener").addClass('fa');
-		
-		$(".menu_opener").removeClass('fa-regular');
-		$(".menu_opener").removeClass('fa-solid');
-		$(".menu_opener").removeClass('fa-xmark');
-		
-		$("html body").css("overflow-y", "auto");
-		$(".main_div").css("width", "100%");
-		$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) - 14.5);
-		
-	}
-	else {
-		$(".menu_closer").fadeIn(200);
-		$(".menu_opener").removeClass('fa-bars');
-		$(".menu_opener").removeClass('fa');
-		
-		$(".menu_opener").addClass('fa-regular');
-		$(".menu_opener").addClass('fa-solid');
-		$(".menu_opener").addClass('fa-xmark');
-		
-		$("html body").css("overflow-y", "hidden");
-		$(".main_div").css("width", "calc(100% - 14.5px)");
-		$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) + 14.5);
-	}
-	//fa-regular fa-solid fa-xmark
+.fixed_menu_cont {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}
 
-	ismenuopen = !ismenuopen;
+.fixed_menu_button {
+	display: flex;
+	align-items: center;
+	padding: 0px 14px;
+	cursor: pointer;
+	height: 100%;
+}
 
-	//overflow: hidden;
+.fixed_menu_button_selected {
+	text-decoration: underline 3px;
+}
+
+.fixed_menu_left_cont {
+	display: flex;
+	border-radius: 0px 10px 10px 0px;
+	overflow: hidden;
+}
+
+.fixed_menu_right_cont {
+	border-radius: 10px 0px 0px 10px;
+	overflow: hidden;
+	display: none;
+}
+
+.notification_num {
+	position: relative;
+    top: 8px;
+    right: -4px;
+	border-radius: 20px;
+	height: 13px;
+	width: 13px;
+	font-size: 13px;
+	color: white;
+	background: red;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+
+/*.fixed_menu_button:hover {
+	background: white;
+	color: black;
+}*/
+
+.fixed_menu_button:hover {
+	animation: button_background_hover_ani 0.2s ease-in-out;
+	background: white;
+	color: black;
+}
+
+@keyframes button_background_hover_ani {
+	from {	
+		background: black;
+		color: white;
+	}
+	to {
+		background: white;
+		color: black;
+	}
+}
+
+.bar_button {
+	display: none;
+	width: 24.5px;
+	justify-content: center;
+}
+
+.fixed_menu_all_buttons_cont  {
+	display: flex;
+	overflow: hidden;
+}
+
+@media only screen and (max-width: 1100px) {
+	.bar_button {
+		display: flex;
+	}
+	
+	.fixed_menu_all_buttons_cont {
+		left: -200px;
+		top: 90px;
+		position: absolute;
+		background: black;
+		flex-direction: column;
+		border-radius: 0px 20px 20px 0px;
+	}
+	
+	.fixed_menu_right_cont  {
+		display: block;
+		visibility: hidden;
+	}
+}
+
+.fixed_menu_logo_part {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 0px 20px;
+}
+
+.fixed_menu_logo_text_part {
+	display: flex;
+	align-items: center;
+    flex-direction: column;
+	margin-left: 5px;
+}
+
+.fixed_menu_logo_text {
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+}
+
+.fixed_menu_logo_hr {
+	width: 100%;
+	margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
+}
+
+.menu_opener {
+	font-size: 28px;
+}
+
+.main_div {
+	padding: 0;
+	display: block;
+	position: relative;
+	width: 100%;
+	z-index: 2;
+}
+
+.scroll_bar_replace_fixed_menu {
+	width: 14.5px;
+	height: 50px;
+	display: block;
+}
+
+.main_div_outer {
+	display: flex;
+}
+
+.scroll_bar_replace {
+	width: 14.5px;
+	display: none;
+}
+
+.container_1_outer {
+	height: calc(100vh - 50px);
+	width: 100%;
+	overflow: hidden;
 }
 
 
+.container_1_outer_1 {
+	padding-top: 50px;
+	height: calc(100vh - 50px);
+	display: flex;    
+	flex-direction: column;
+    align-items: center;
+}
 
-$( window ).resize(function() {
-	beReadyPage();
-	setTimeout(function() { beReadyPage();}, 100);
-	return;
-});
-
+.container_1_outer_2 {
+	
+	display: flex;    
+	flex-direction: column;
+    align-items: center;
+}
