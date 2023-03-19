@@ -28,7 +28,7 @@ $(window).scroll(function(event){
 function beReadyPage () {
 	window_height = parseInt($( window ).height());
 	window_width = parseInt($( window ).width());
-	$(".fixed_menu_logo_part").css("left", ((parseInt($( ".fixed_menu_right_cont" ).width()) - parseInt($( ".fixed_menu_left_cont" ).width()))) / 2);
+	//$(".fixed_menu_logo_part").css("left", ((parseInt($( ".fixed_menu_right_cont" ).width()) - parseInt($( ".fixed_menu_left_cont" ).width()))) / 2);
 	if(ismenuopen) 
 		$(".menu_closer").css("display", window_width > 1086 ? "none" : "block");
 }
@@ -38,7 +38,7 @@ function openLeftMenu () {
 	$(".fixed_menu_all_buttons_cont").stop();
 	$(".menu_closer").stop();
 	$('.fixed_menu_all_buttons_cont').animate(
-		{ left: ismenuopen ? -150 : 0 }, 200);
+		{ left: ismenuopen ? -200 : 0 }, 200);
 	if(ismenuopen) {
 		$(".menu_closer").fadeOut(200);
 		$(".menu_opener").addClass('fa-bars');
@@ -71,3 +71,4 @@ $( window ).resize(function() {
 	setTimeout(function() { beReadyPage();}, 100);
 	return;
 });
+
