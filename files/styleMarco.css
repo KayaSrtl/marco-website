@@ -67,7 +67,7 @@ html body {
 	width: 100%;
 	height: 50px;
 	background: #000000;
-    box-shadow: 9px 4px 0px 0px rgb(13 57 82 / 46%);
+    box-shadow: 0px 4px 0px 0px rgb(13 57 82 / 46%);
 	z-index: 10;
 }
 
@@ -86,8 +86,35 @@ html body {
 	height: 100%;
 }
 
+.fixed_menu_button_selected {
+	text-decoration: underline 3px;
+}
+
 .fixed_menu_left_cont {
 	display: flex;
+	border-radius: 0px 10px 10px 0px;
+	overflow: hidden;
+}
+
+.fixed_menu_right_cont {
+	border-radius: 10px 0px 0px 10px;
+	overflow: hidden;
+	display: none;
+}
+
+.notification_num {
+	position: relative;
+    top: 8px;
+    right: -4px;
+	border-radius: 20px;
+	height: 13px;
+	width: 13px;
+	font-size: 13px;
+	color: white;
+	background: red;
+	display: flex;
+	align-items: center;
+    justify-content: center;
 }
 
 /*.fixed_menu_button:hover {
@@ -96,7 +123,7 @@ html body {
 }*/
 
 .fixed_menu_button:hover {
-	animation: button_background_hover_ani 0.3s ease-in-out;
+	animation: button_background_hover_ani 0.2s ease-in-out;
 	background: white;
 	color: black;
 }
@@ -129,7 +156,7 @@ html body {
 	}
 	
 	.fixed_menu_all_buttons_cont {
-		left: -150px;
+		left: -200px;
 		top: 90px;
 		position: absolute;
 		background: black;
@@ -137,6 +164,10 @@ html body {
 		border-radius: 0px 20px 20px 0px;
 	}
 	
+	.fixed_menu_right_cont  {
+		display: block;
+		visibility: hidden;
+	}
 }
 
 .fixed_menu_logo_part {
@@ -144,6 +175,7 @@ html body {
 	display: flex;
 	align-items: center;
 	position: relative;
+	padding: 0px 20px;
 }
 
 .fixed_menu_logo_text_part {
@@ -179,7 +211,7 @@ html body {
 
 
 .container_1_outer {
-	height: 100vh;
+	height: calc(100vh - 50px);
 	width: 100%;
 	overflow: hidden;
 }
@@ -193,4 +225,9 @@ html body {
     align-items: center;
 }
 
-
+.container_1_outer_2 {
+	
+	display: flex;    
+	flex-direction: column;
+    align-items: center;
+}
