@@ -208,7 +208,20 @@ html body {
 	z-index: 2;
 }
 
+.scroll_bar_replace_fixed_menu {
+	width: 14.5px;
+	height: 50px;
+	display: block;
+}
 
+.main_div_outer {
+	display: flex;
+}
+
+.scroll_bar_replace {
+	width: 14.5px;
+	display: none;
+}
 
 .container_1_outer {
 	height: calc(100vh - 50px);
