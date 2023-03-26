@@ -1,5 +1,6 @@
 var window_height, window_width;
 var ismenuopen = false;
+var is_mobile_phone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) ? true : false;
 
 
 $( document ).ready(function() {
@@ -47,6 +48,13 @@ function openLeftMenu () {
 		$(".menu_opener").removeClass('fa-regular');
 		$(".menu_opener").removeClass('fa-solid');
 		$(".menu_opener").removeClass('fa-xmark');
+		
+		$("html body").css("overflow-y", "auto");
+		if(!is_mobile_phone) {
+			$(".main_div").css("width", "100%");
+			$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) - 14);
+		}
+		console.log(is_mobile_phone);
 	}
 	else {
 		$(".menu_closer").fadeIn(200);
@@ -56,12 +64,18 @@ function openLeftMenu () {
 		$(".menu_opener").addClass('fa-regular');
 		$(".menu_opener").addClass('fa-solid');
 		$(".menu_opener").addClass('fa-xmark');
+		
+		$("html body").css("overflow-y", "hidden");
+		if(!is_mobile_phone) {
+			$(".main_div").css("width", "calc(100% - 14px)");
+			$(".fixed_menu_right_cont").css("width", parseInt($( ".fixed_menu_right_cont" ).width()) + 14.5);
+		}
 	}
 	//fa-regular fa-solid fa-xmark
 
 	ismenuopen = !ismenuopen;
 
-	//menu_closer
+	//overflow: hidden;
 }
 
 
